@@ -9,7 +9,7 @@ def run(config):
     if visits is None or events is None:
         return {"available": False}
 
-    if "visit_occurrence_id" not in events.columns:
+    if "visit_occurrence_id" not in events.columns or "visit_occurrence_id" not in visits.columns:
         return {"available": False}
 
     df = events.merge(visits, on="visit_occurrence_id", how="left")

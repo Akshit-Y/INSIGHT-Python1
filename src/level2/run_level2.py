@@ -1,4 +1,6 @@
 import logging
+from logging import config
+from .reporting import build_level2_report
 
 from . import (
     step1_before_birth,
@@ -43,13 +45,18 @@ def run(config: dict) -> dict:
     print("\n[Step 8] Parent-child checks...")
     s8 = step8_parent_child.run(config)
 
-    return {
-        "before_birth": s1,
-        "after_death": s2,
-        "outside_obs": s3,
-        "person_integrity": s4,
-        "visit_before": s5,
-        "visit_after": s6,
-        "visit_mismatch": s7,
-        "parent_child": s8
+    results = {
+    "before_birth": s1,
+    "after_death": s2,
+    "outside_obs": s3,
+    "person_integrity": s4,
+    "visit_before": s5,
+    "visit_after": s6,
+    "visit_mismatch": s7,
+    "parent_child": s8
     }
+
+    output_path = config["paths"]["output_reports"]
+    build_level2_report(results, config)
+
+    return results

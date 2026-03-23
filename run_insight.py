@@ -2,7 +2,7 @@ import logging
 import sys
 from src.utils.io import load_config
 from src.level1.run_level1 import run as run_level1
-from src.level2.run_level2 import run as run_level2   # ✅ added
+from src.level2.run_level2 import run as run_level2 
 from src.level3.run_level3 import run as run_level3
 
 logging.basicConfig(

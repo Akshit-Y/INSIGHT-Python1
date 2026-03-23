@@ -5,7 +5,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
 def load_config(config_path="config/parameters.yml"):
     """Read the YAML config file and return it as a Python dictionary."""
     if not os.path.exists(config_path):
