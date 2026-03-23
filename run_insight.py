@@ -1,15 +1,10 @@
-"""
-INSIGHT — Main Runner
-Usage: python run_insight.py
-"""
-
 import logging
 import sys
 from src.utils.io import load_config
 from src.level1.run_level1 import run as run_level1
+from src.level2.run_level2 import run as run_level2   # ✅ added
 from src.level3.run_level3 import run as run_level3
 
-# Set up logging so messages appear in the terminal
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)-8s  %(message)s",
@@ -25,7 +20,12 @@ if __name__ == "__main__":
     print(f"CDM data folder: {config['paths']['cdm_data']}")
 
     run_level1(config)
-    run_level3(config) 
 
-    print("\nAll done. Open output/Level1_Report.html in your browser.")
-    print("  Level 3 → output/Level3_Report.html") 
+    run_level2(config)
+
+    run_level3(config)
+
+    print("\nAll done.")
+    print("Level 1 → output/Level1_Report.html")
+    print("Level 2 → (add report if implemented)")
+    print("Level 3 → output/Level3_Report.html")
