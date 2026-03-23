@@ -1,0 +1,31 @@
+study:
+  name: "My Drug Safety Study"
+  start_year: 1995
+  end_year: 2024
+  threshold_inconsistencies: 0.05
+
+paths:
+  cdm_data: "./data/cdm/"
+  output_reports: "./output/"
+
+cdm_version: "2.2"
+
+tables_present:
+  - PERSONS
+  - OBSERVATION_PERIODS
+  - EVENTS
+  - MEDICINES
+  - VACCINES
+  - PROCEDURES
+  - MEDICAL_OBSERVATIONS
+  - VISIT_OCCURRENCE
+  - PERSON_RELATIONSHIPS
+  - CDM_SOURCE
+  - INSTANCE
+  - METADATA
+  - PRODUCTS
+
+tables_optional:
+  - EUROCAT
+  - SURVEY_ID
+  - SURVEY_OBSERVATIONS

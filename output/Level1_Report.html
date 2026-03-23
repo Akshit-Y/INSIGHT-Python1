@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>INSIGHT — Level 1 — Conformance & Completeness</title>
+  <style>
+    body        { font-family: Arial, sans-serif; margin: 0; padding: 28px;
+                  background: #f7f7f5; color: #1a1a18; }
+    h1          { font-size: 24px; font-weight: 600;
+                  border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+    h2          { font-size: 18px; font-weight: 500; margin-top: 36px; }
+    .meta       { font-size: 13px; color: #777; margin-bottom: 28px; }
+    .card       { background: white; border-radius: 10px; padding: 22px;
+                  margin: 16px 0; box-shadow: 0 1px 5px rgba(0,0,0,0.08); }
+    .pass       { display:inline-block; background:#eaf3de; color:#3b6d11;
+                  padding:2px 12px; border-radius:12px; font-size:12px;
+                  font-weight:600; }
+    .fail       { display:inline-block; background:#fcebeb; color:#791f1f;
+                  padding:2px 12px; border-radius:12px; font-size:12px;
+                  font-weight:600; }
+    .warn       { display:inline-block; background:#faeeda; color:#633806;
+                  padding:2px 12px; border-radius:12px; font-size:12px;
+                  font-weight:600; }
+    .stats-row  { display:flex; gap:14px; flex-wrap:wrap; margin:16px 0; }
+    .stat-box   { background:white; border-radius:8px; padding:16px 22px;
+                  box-shadow:0 1px 4px rgba(0,0,0,0.07); min-width:140px; }
+    .stat-val   { font-size:30px; font-weight:600; color:#185fa5; }
+    .stat-lbl   { font-size:12px; color:#888; margin-top:2px; }
+    table       { width:100%; border-collapse:collapse; font-size:13px;
+                  margin-top:12px; }
+    th          { background:#f1efe8; text-align:left; padding:9px 14px;
+                  font-weight:600; border-bottom:1px solid #ddd; }
+    td          { padding:7px 14px; border-bottom:1px solid #eee; }
+    tr:hover td { background:#f9f9f7; }
+    p           { font-size:14px; color:#555; line-height:1.6; }
+  </style>
+</head>
+<body>
+
+<h1>INSIGHT Report — Level 1 — Conformance & Completeness</h1>
+<div class="meta">
+  Study: <b>My Drug Safety Study</b> &nbsp;|&nbsp;
+  Generated: <b>2026-03-23 13:04</b> &nbsp;|&nbsp;
+  CDM version: <b>2.2</b>
+</div>
+
+
+<div class="stats-row">
+  
+  <div class="stat-box">
+    <div class="stat-val">13</div>
+    <div class="stat-lbl">Tables present</div>
+  </div>
+  
+  <div class="stat-box">
+    <div class="stat-val">0</div>
+    <div class="stat-lbl">Tables missing (mandatory)</div>
+  </div>
+  
+  <div class="stat-box">
+    <div class="stat-val">0</div>
+    <div class="stat-lbl">Variables with >20% missing</div>
+  </div>
+  
+  <div class="stat-box">
+    <div class="stat-val">12</div>
+    <div class="stat-lbl">Date format errors</div>
+  </div>
+  
+  <div class="stat-box">
+    <div class="stat-val">723</div>
+    <div class="stat-lbl">Dates before cutoff year</div>
+  </div>
+  
+  <div class="stat-box">
+    <div class="stat-val">2</div>
+    <div class="stat-lbl">Future dates</div>
+  </div>
+  
+</div>
+
+
+
+<div class="card">
+  <h2>
+    Step 0 — CDM Table Presence
+    <span class="pass">PASS</span>
+    
+    
+  </h2>
+
+  
+  <p>Checks whether all required CDM table files exist on disk. Missing mandatory tables are a hard FAIL — no further analysis is possible for those tables.</p>
+  
+
+  
+  <table>
+    <thead>
+      <tr><th>table</th><th>file_path</th><th>present</th><th>mandatory</th><th>status</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr><td>PERSONS</td><td>./data/cdm/PERSONS.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>./data/cdm/OBSERVATION_PERIODS.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>EVENTS</td><td>./data/cdm/EVENTS.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>MEDICINES</td><td>./data/cdm/MEDICINES.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>VACCINES</td><td>./data/cdm/VACCINES.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>./data/cdm/PROCEDURES.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>./data/cdm/MEDICAL_OBSERVATIONS.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>./data/cdm/VISIT_OCCURRENCE.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>./data/cdm/PERSON_RELATIONSHIPS.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>./data/cdm/CDM_SOURCE.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>INSTANCE</td><td>./data/cdm/INSTANCE.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>METADATA</td><td>./data/cdm/METADATA.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>PRODUCTS</td><td>./data/cdm/PRODUCTS.csv</td><td>Yes</td><td>Yes</td><td>PASS</td></tr>
+      
+      <tr><td>EUROCAT</td><td>./data/cdm/EUROCAT.csv</td><td>No</td><td>No</td><td>WARN</td></tr>
+      
+      <tr><td>SURVEY_ID</td><td>./data/cdm/SURVEY_ID.csv</td><td>No</td><td>No</td><td>WARN</td></tr>
+      
+      <tr><td>SURVEY_OBSERVATIONS</td><td>./data/cdm/SURVEY_OBSERVATIONS.csv</td><td>No</td><td>No</td><td>WARN</td></tr>
+      
+    </tbody>
+  </table>
+  
+
+  
+
+</div>
+
+<div class="card">
+  <h2>
+    Step 1 — Table Formatting
+    
+    <span class="fail">FAIL</span>
+    
+  </h2>
+
+  
+  <p>For each table: are all column names lowercase? Are all mandatory columns present? Are there any duplicate rows? For the PERSONS table, are sex values one of M/F/U/O?</p>
+  
+
+  
+  <table>
+    <thead>
+      <tr><th>table</th><th>check</th><th>status</th><th>detail</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr><td>PERSONS</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PERSONS</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PERSONS</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PERSONS</td><td>Sex values in allowed list (M/F/U/O)</td><td>FAIL</td><td>2 rows with invalid sex values: ['1', 'male']</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>EVENTS</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>EVENTS</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>EVENTS</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>MEDICINES</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>MEDICINES</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>MEDICINES</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>VACCINES</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>VACCINES</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>VACCINES</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>INSTANCE</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>INSTANCE</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>INSTANCE</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>METADATA</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>METADATA</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>METADATA</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PRODUCTS</td><td>All column names lowercase</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PRODUCTS</td><td>Required columns present</td><td>PASS</td><td>OK</td></tr>
+      
+      <tr><td>PRODUCTS</td><td>No duplicate rows</td><td>PASS</td><td>OK</td></tr>
+      
+    </tbody>
+  </table>
+  
+
+  
+
+</div>
+
+<div class="card">
+  <h2>
+    Step 2 — Missing Data Analysis
+    
+    
+    
+  </h2>
+
+  
+  <p>Percentage of missing values for every variable in every table. The chart shows the 20 most-missing variables. High missingness in mandatory fields needs ETL investigation.</p>
+  
+
+  
+  <table>
+    <thead>
+      <tr><th>table</th><th>variable</th><th>total_rows</th><th>missing_n</th><th>missing_pct</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr><td>MEDICINES</td><td>date_dispensing</td><td>1500</td><td>10</td><td>0.67</td></tr>
+      
+      <tr><td>MEDICINES</td><td>medicinal_product_id</td><td>1500</td><td>5</td><td>0.33</td></tr>
+      
+      <tr><td>PERSONS</td><td>date_of_birth</td><td>500</td><td>1</td><td>0.2</td></tr>
+      
+      <tr><td>PERSONS</td><td>person_id</td><td>500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>person_id</td><td>500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PERSONS</td><td>sex_at_instance_creation</td><td>500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>op_start_date</td><td>500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>op_end_date</td><td>500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>EVENTS</td><td>end_date_record</td><td>2000</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>EVENTS</td><td>event_code</td><td>2000</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>EVENTS</td><td>person_id</td><td>2000</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>EVENTS</td><td>start_date_record</td><td>2000</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>EVENTS</td><td>meaning</td><td>2000</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>EVENTS</td><td>event_code_vocabulary</td><td>2000</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>MEDICINES</td><td>person_id</td><td>1500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>MEDICINES</td><td>date_prescription</td><td>1500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>MEDICINES</td><td>meaning</td><td>1500</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VACCINES</td><td>person_id</td><td>400</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VACCINES</td><td>vx_admin_date</td><td>400</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VACCINES</td><td>vx_record_date</td><td>400</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VACCINES</td><td>vx_type</td><td>400</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VACCINES</td><td>meaning</td><td>400</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>person_id</td><td>800</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>procedure_date</td><td>800</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>procedure_code</td><td>800</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>meaning</td><td>800</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>person_id</td><td>600</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>mo_date</td><td>600</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>mo_code</td><td>600</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>meaning</td><td>600</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>person_id</td><td>700</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>visit_start_date</td><td>700</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>visit_end_date</td><td>700</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>visit_occurrence_id</td><td>700</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>person_id</td><td>200</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>linked_person_id</td><td>200</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>relationship_type</td><td>200</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PERSON_RELATIONSHIPS</td><td>date_of_birth_child</td><td>200</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>cdm_source_name</td><td>1</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>cdm_version</td><td>1</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>cdm_holder</td><td>1</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>CDM_SOURCE</td><td>source_release_date</td><td>1</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>INSTANCE</td><td>instance_id</td><td>1</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>INSTANCE</td><td>instance_description</td><td>1</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>INSTANCE</td><td>date_creation</td><td>1</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>METADATA</td><td>table_name</td><td>26</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>METADATA</td><td>variable_name</td><td>26</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>METADATA</td><td>mandatory</td><td>26</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>METADATA</td><td>format</td><td>26</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PRODUCTS</td><td>medicinal_product_id</td><td>20</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PRODUCTS</td><td>product_name</td><td>20</td><td>0</td><td>0.0</td></tr>
+      
+      <tr><td>PRODUCTS</td><td>atc_code</td><td>20</td><td>0</td><td>0.0</td></tr>
+      
+    </tbody>
+  </table>
+  
+
+  
+  <div style="margin-top:16px"><div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="7200d073-1791-4d94-8754-6c077f7ed868" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("7200d073-1791-4d94-8754-6c077f7ed868")) {                    Plotly.newPlot(                        "7200d073-1791-4d94-8754-6c077f7ed868",                        [{"hovertemplate":"Missing (%)=%{x}\u003cbr\u003e=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#378ADD","pattern":{"shape":""}},"name":"","orientation":"h","showlegend":false,"textposition":"auto","x":{"dtype":"f8","bdata":"cT0K16Nw5T8fhetRuB7VP5qZmZmZmck\u002fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="},"xaxis":"x","y":["MEDICINES.date_dispensing","MEDICINES.medicinal_product_id","PERSONS.date_of_birth","PERSONS.person_id","PERSONS.sex_at_instance_creation","OBSERVATION_PERIODS.person_id","OBSERVATION_PERIODS.op_start_date","OBSERVATION_PERIODS.op_end_date","EVENTS.person_id","EVENTS.start_date_record","EVENTS.end_date_record","EVENTS.event_code","EVENTS.event_code_vocabulary","EVENTS.meaning","MEDICINES.person_id","MEDICINES.date_prescription","MEDICINES.meaning","VACCINES.person_id","VACCINES.vx_admin_date","VACCINES.vx_record_date"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Missing (%)"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":""},"autorange":"reversed"},"legend":{"tracegroupgap":0},"title":{"text":"Top 20 most-missing variables (%)"},"barmode":"relative","font":{"family":"Arial"},"margin":{"l":10,"r":20,"t":40,"b":40},"plot_bgcolor":"white","paper_bgcolor":"white","height":420},                        {"responsive": true}                    )                };            </script>        </div></div>
+  
+
+</div>
+
+<div class="card">
+  <h2>
+    Step 3 — Date Variable Validation
+    
+    <span class="fail">FAIL</span>
+    
+  </h2>
+
+  
+  <p>Three checks per date column: (1) format must be exactly YYYYMMDD, (2) year must be ≥ 1995, (3) date must not be in the future. The chart shows counts of each error type.</p>
+  
+
+  
+  <table>
+    <thead>
+      <tr><th>table</th><th>date_variable</th><th>total_records</th><th>error_format</th><th>error_year</th><th>future_date</th><th>has_issues</th><th>status</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr><td>PERSONS</td><td>date_of_birth</td><td>500</td><td>2</td><td>425</td><td>0</td><td>True</td><td>FAIL</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>op_start_date</td><td>500</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>OBSERVATION_PERIODS</td><td>op_end_date</td><td>500</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>EVENTS</td><td>start_date_record</td><td>2000</td><td>0</td><td>298</td><td>2</td><td>True</td><td>FAIL</td></tr>
+      
+      <tr><td>EVENTS</td><td>end_date_record</td><td>2000</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>MEDICINES</td><td>date_dispensing</td><td>1500</td><td>10</td><td>0</td><td>0</td><td>True</td><td>FAIL</td></tr>
+      
+      <tr><td>MEDICINES</td><td>date_prescription</td><td>1500</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>VACCINES</td><td>vx_admin_date</td><td>400</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>VACCINES</td><td>vx_record_date</td><td>400</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>PROCEDURES</td><td>procedure_date</td><td>800</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>MEDICAL_OBSERVATIONS</td><td>mo_date</td><td>600</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>visit_start_date</td><td>700</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+      <tr><td>VISIT_OCCURRENCE</td><td>visit_end_date</td><td>700</td><td>0</td><td>0</td><td>0</td><td>False</td><td>PASS</td></tr>
+      
+    </tbody>
+  </table>
+  
+
+  
+  <div style="margin-top:16px"><div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="903ba524-37f0-4daa-82cf-1d0bf7e5dea8" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("903ba524-37f0-4daa-82cf-1d0bf7e5dea8")) {                    Plotly.newPlot(                        "903ba524-37f0-4daa-82cf-1d0bf7e5dea8",                        [{"hovertemplate":"variable=error_format\u003cbr\u003eDate column=%{x}\u003cbr\u003eNumber of records=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"error_format","marker":{"color":"#E24B4A","pattern":{"shape":""}},"name":"error_format","orientation":"v","showlegend":true,"textposition":"auto","x":["date_of_birth","op_start_date","op_end_date","start_date_record","end_date_record","date_dispensing","date_prescription","vx_admin_date","vx_record_date","procedure_date","mo_date","visit_start_date","visit_end_date"],"xaxis":"x","y":{"dtype":"i1","bdata":"AgAAAAAKAAAAAAAAAA=="},"yaxis":"y","type":"bar"},{"hovertemplate":"variable=error_year\u003cbr\u003eDate column=%{x}\u003cbr\u003eNumber of records=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"error_year","marker":{"color":"#378ADD","pattern":{"shape":""}},"name":"error_year","orientation":"v","showlegend":true,"textposition":"auto","x":["date_of_birth","op_start_date","op_end_date","start_date_record","end_date_record","date_dispensing","date_prescription","vx_admin_date","vx_record_date","procedure_date","mo_date","visit_start_date","visit_end_date"],"xaxis":"x","y":{"dtype":"i2","bdata":"qQEAAAAAKgEAAAAAAAAAAAAAAAAAAAAAAAA="},"yaxis":"y","type":"bar"},{"hovertemplate":"variable=future_date\u003cbr\u003eDate column=%{x}\u003cbr\u003eNumber of records=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"future_date","marker":{"color":"#1D9E75","pattern":{"shape":""}},"name":"future_date","orientation":"v","showlegend":true,"textposition":"auto","x":["date_of_birth","op_start_date","op_end_date","start_date_record","end_date_record","date_dispensing","date_prescription","vx_admin_date","vx_record_date","procedure_date","mo_date","visit_start_date","visit_end_date"],"xaxis":"x","y":{"dtype":"i1","bdata":"AAAAAgAAAAAAAAAAAA=="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Date column"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Number of records"}},"legend":{"title":{"text":"variable"},"tracegroupgap":0},"title":{"text":"Date validation issues by column"},"barmode":"stack","font":{"family":"Arial"},"margin":{"l":10,"r":20,"t":40,"b":100},"plot_bgcolor":"white","paper_bgcolor":"white","height":380},                        {"responsive": true}                    )                };            </script>        </div></div>
+  
+
+</div>
+
+<div class="card">
+  <h2>
+    Step 4 — Conventions & Frequency Tables
+    
+    <span class="fail">FAIL</span>
+    
+  </h2>
+
+  
+  <p>Checks that categorical columns only contain allowed values (e.g. sex must be M/F/U/O, not '1'/'2'). Also shows the distribution of each categorical variable.</p>
+  
+
+  
+  <table>
+    <thead>
+      <tr><th>table</th><th>column</th><th>allowed</th><th>invalid_n</th><th>invalid_pct</th><th>status</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr><td>PERSONS</td><td>sex_at_instance_creation</td><td>['M', 'F', 'U', 'O']</td><td>2</td><td>0.4</td><td>FAIL</td></tr>
+      
+      <tr><td>EVENTS</td><td>event_code_vocabulary</td><td>['ICD9', 'ICD10', 'ICD10CM', 'SNOMED', 'READ']</td><td>0</td><td>0.0</td><td>PASS</td></tr>
+      
+    </tbody>
+  </table>
+  
+
+  
+
+</div>
+
+<div class="card">
+  <h2>
+    Step 5 — Distributions
+    
+    
+    
+  </h2>
+
+  
+  <p>Descriptive statistics for numeric variables (mean, median, IQR, min, max) and counts of records per year for date variables.</p>
+  
+
+  
+
+  
+
+</div>
+
+
+</body>
+</html>
