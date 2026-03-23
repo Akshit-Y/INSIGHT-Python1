@@ -7,6 +7,7 @@ import logging
 import sys
 from src.utils.io import load_config
 from src.level1.run_level1 import run as run_level1
+from src.level3.run_level3 import run as run_level3
 
 # Set up logging so messages appear in the terminal
 logging.basicConfig(
@@ -24,5 +25,7 @@ if __name__ == "__main__":
     print(f"CDM data folder: {config['paths']['cdm_data']}")
 
     run_level1(config)
+    run_level3(config) 
 
     print("\nAll done. Open output/Level1_Report.html in your browser.")
+    print("  Level 3 → output/Level3_Report.html") 
